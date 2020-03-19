@@ -6,10 +6,10 @@ from accounts.forms import *
 from accounts.models import User
 
 
-class RegisterEmployeeView(CreateView):
+class RegisterUserView(CreateView):
     model = User
-    form_class = EmployeeRegistrationForm
-    template_name = 'accounts/employee/register.html'
+    form_class = UserRegistrationForm
+    template_name = 'accounts/user/register.html'
     success_url = '/'
 
     extra_context = {
@@ -32,13 +32,13 @@ class RegisterEmployeeView(CreateView):
             user.save()
             return redirect('accounts:login')
         else:
-            return render(request, 'accounts/employee/register.html', {'form': form})
+            return render(request, 'accounts/user/register.html', {'form': form})
 
 
-class RegisterEmployerView(CreateView):
+class RegisterInstitutionView(CreateView):
     model = User
-    form_class = EmployerRegistrationForm
-    template_name = 'accounts/employer/register.html'
+    form_class = InstitutionRegistrationForm
+    template_name = 'accounts/Institution/register.html'
     success_url = '/'
 
     extra_context = {
@@ -61,7 +61,7 @@ class RegisterEmployerView(CreateView):
             user.save()
             return redirect('accounts:login')
         else:
-            return render(request, 'accounts/employer/register.html', {'form': form})
+            return render(request, 'accounts/institution/register.html', {'form': form})
 
 
 class LoginView(FormView):

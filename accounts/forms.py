@@ -9,11 +9,11 @@ GENDER_CHOICES = (
     ('female', 'Female'))
 
 
-class EmployeeRegistrationForm(UserCreationForm):
+class UserRegistrationForm(UserCreationForm):
     # gender = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=GENDER_CHOICES)
 
     def __init__(self, *args, **kwargs):
-        super(EmployeeRegistrationForm, self).__init__(*args, **kwargs)
+        super(UserRegistrationForm, self).__init__(*args, **kwargs)
         self.fields['gender'].required = True
         self.fields['first_name'].label = "First Name"
         self.fields['last_name'].label = "Last Name"
@@ -73,16 +73,16 @@ class EmployeeRegistrationForm(UserCreationForm):
 
     def save(self, commit=True):
         user = super(UserCreationForm, self).save(commit=False)
-        user.role = "employee"
+        user.role = "user"
         if commit:
             user.save()
         return user
 
 
-class EmployerRegistrationForm(UserCreationForm):
+class InstitutionRegistrationForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
-        super(EmployerRegistrationForm, self).__init__(*args, **kwargs)
+        super(InstitutionRegistrationForm, self).__init__(*args, **kwargs)
         self.fields['first_name'].label = "Name"
         self.fields['last_name'].label = "Address"
         self.fields['password1'].label = "Password"
@@ -90,12 +90,12 @@ class EmployerRegistrationForm(UserCreationForm):
 
         self.fields['first_name'].widget.attrs.update(
             {
-                'placeholder': 'Enter Employer\'s Name',
+                'placeholder': 'Enter Institution\'s Name',
             }
         )
         self.fields['last_name'].widget.attrs.update(
             {
-                'placeholder': 'Enter Employer\'s Address',
+                'placeholder': 'Enter Institution\'s Address',
             }
         )
         self.fields['email'].widget.attrs.update(
@@ -130,7 +130,7 @@ class EmployerRegistrationForm(UserCreationForm):
 
     def save(self, commit=True):
         user = super(UserCreationForm, self).save(commit=False)
-        user.role = "employer"
+        user.role = "institution"
         if commit:
             user.save()
         return user
@@ -170,10 +170,10 @@ class UserLoginForm(forms.Form):
         return self.user
 
 
-class EmployeeProfileUpdateForm(forms.ModelForm):
+class UserProfileUpdateForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
-        super(EmployeeProfileUpdateForm, self).__init__(*args, **kwargs)
+        super(UserProfileUpdateForm, self).__init__(*args, **kwargs)
         self.fields['first_name'].widget.attrs.update(
             {
                 'placeholder': 'Enter First Name',

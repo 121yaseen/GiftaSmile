@@ -55,7 +55,7 @@
                     <li class="nav-item">
                         <a href="mailto:sja@gmail.com" class="nav-link">Contact</a>
                     </li>
-                    {% if request.user.is_authenticated and request.user.role == 'employer' %}
+                    {% if request.user.is_authenticated and request.user.role == 'institution' %}
                         <li class="nav-item dropdown">
                             <a id="clientZone" href="#" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false"
@@ -67,21 +67,21 @@
                                              class="img-fluid">
                                     </div>
                                 </div>
-                                {% if request.user.role == 'employee' %}
+                                {% if request.user.role == 'user' %}
                                     {{ request.user.first_name }} {{ request.user.last_name }}
                                 {% else %}
                                     {{ request.user.first_name }}
                                 {% endif %}
                             </a>
                             <div aria-labelledby="clientZone" class="dropdown-menu">
-                                <a href="{% url 'jobs:employer-dashboard' %}" class="dropdown-item">Dashboard</a>
-                                <a href="{% url 'jobs:employer-all-applicants' %}" class="dropdown-item">Applicants </a>
-                                <a href="{% url 'jobs:employer-jobs-create' %}" class="dropdown-item">Post a new
+                                <a href="{% url 'jobs:institution-dashboard' %}" class="dropdown-item">Dashboard</a>
+                                <a href="{% url 'jobs:institution-all-applicants' %}" class="dropdown-item">Applicants </a>
+                                <a href="{% url 'jobs:institution-jobs-create' %}" class="dropdown-item">Post a new
                                     short job </a>
                                 <a href="{% url 'accounts:logout' %}" class="dropdown-item">Logout</a>
                             </div>
                         </li>
-                    {% elif request.user.is_authenticated and request.user.role == 'employee' %}
+                    {% elif request.user.is_authenticated and request.user.role == 'user' %}
                         <li class="nav-item dropdown">
                             <a id="clientZone" href="#" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false"
@@ -93,14 +93,14 @@
                                              class="img-fluid">
                                     </div>
                                 </div>
-                                {% if request.user.role == 'employee' %}
+                                {% if request.user.role == 'user' %}
                                     {{ request.user.first_name }} {{ request.user.last_name }}
                                 {% else %}
                                     {{ request.user.first_name }}
                                 {% endif %}
                             </a>
                             <div aria-labelledby="clientZone" class="dropdown-menu">
-                                <a href="{% url 'accounts:employer-profile-update' %}" class="dropdown-item">Edit Profile</a>
+                                <a href="{% url 'accounts:institution-profile-update' %}" class="dropdown-item">Edit Profile</a>
                                 <a href="{% url 'accounts:logout' %}" class="dropdown-item">Logout</a>
                             </div>
                         </li>
@@ -110,8 +110,8 @@
                                class="nav-link dropdown-toggle"><i class="fa fa-signing"></i>Register
                             </a>
                             <div aria-labelledby="pages" class="dropdown-menu">
-                                <a href="{% url 'accounts:employee-register' %}" class="dropdown-item">Employee</a>
-                                <a href="{% url 'accounts:employer-register' %}" class="dropdown-item">Employer</a>
+                                <a href="{% url 'accounts:user-register' %}" class="dropdown-item">User</a>
+                                <a href="{% url 'accounts:institution-register' %}" class="dropdown-item">institution</a>
                             </div>
                         </li>
                         <li class="nav-item" style="color: #fff">
@@ -147,7 +147,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-12 mb-5">
                     <h4 class="h5">About Jobs</h4>
-                    <p> This Short Job Assistant is created by students of MACE as part of their Design Project </p>
+                    <p> Gift a Smile  </p>
                 </div>
             </div>
         </div>
@@ -156,9 +156,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-md-left text-center">
-                    <p>&copy;2019 S.J.A  Made with 💗 by <a href="https://www.facebook.com/aceson.sunny.5">Aceson</a>
-                    <a href="https://www.facebook.com/muhsi.7994853790">Muhsin</a>
-                  <a href="https://www.facebook.com/yaseen7561831313">Yaseen</a></p>
+                    <p>&copy;2020 Gift a Smile || Website made with 💗 by <a href="https://github.com/BroCodeClans">BroCodeClan</a></p>
                 </div>
             </div>
         </div>
